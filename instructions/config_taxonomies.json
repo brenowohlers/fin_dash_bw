@@ -1,0 +1,70 @@
+{
+  "tema_1": [
+    "economico",
+    "regulatorio",
+    "politico",
+    "juridico",
+    "operacional",
+    "social",
+    "ambiental",
+    "governanca"
+  ],
+  "tema_2": [
+    "economico",
+    "regulatorio",
+    "politico",
+    "juridico",
+    "operacional",
+    "social",
+    "ambiental",
+    "governanca"
+  ],
+  "tipo_evento": [
+    "ma",
+    "ipo",
+    "follow-on",
+    "regulacao",
+    "operacao",
+    "projeto-lei",
+    "acordo",
+    "desastre",
+    "decisao-judicial",
+    "announcement",
+    "noticia"
+  ],
+  "tipo_fonte": [
+    "oficial",
+    "grande_midia",
+    "midia_local",
+    "stakeholder"
+  ],
+  "setor": [
+    "agua",
+    "esgoto",
+    "energia",
+    "residuos",
+    "multisservico"
+  ],
+  "pais": [
+    "Brasil",
+    "Argentina",
+    "Global",
+    "LatAm"
+  ],
+  "impacto": [
+    "alto",
+    "medio",
+    "baixo"
+  ],
+  "tom": [
+    "positivo",
+    "negativo",
+    "neutro",
+    "misto"
+  ],
+  "status_revisao": [
+    "novo",
+    "revisado",
+    "consolidado"
+  ]
+}

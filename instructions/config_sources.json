@@ -1,0 +1,138 @@
+{
+  "rss_feeds": [
+    {
+      "name": "Valor Econômico",
+      "url": "https://valor.globo.com/rss/",
+      "pais": "Brasil",
+      "priority": 1,
+      "keywords": ["saneamento", "agua", "infraestrutura", "privatizacao"]
+    },
+    {
+      "name": "G1 Brasil",
+      "url": "https://g1.globo.com/rss/",
+      "pais": "Brasil",
+      "priority": 2,
+      "keywords": ["agua", "saneamento", "sabesp", "tarifa"]
+    },
+    {
+      "name": "Diário do Comércio",
+      "url": "https://diariocomercio.com.br/feed/",
+      "pais": "Brasil",
+      "priority": 2,
+      "keywords": ["copasa", "saneamento", "minas", "regulacao"]
+    },
+    {
+      "name": "Reuters",
+      "url": "https://www.reutersagency.com/finance",
+      "pais": "Global",
+      "priority": 1,
+      "keywords": ["water", "sanitation", "infrastructure", "utility"]
+    }
+  ],
+  "scrape_targets": [
+    {
+      "name": "Arsae-MG",
+      "url": "https://arsae.mg.gov.br/",
+      "pais": "Brasil",
+      "estado": "MG",
+      "priority": 1,
+      "xpath_noticia": "//article[@class='noticia'] | //div[@class='news-item']",
+      "empresas": ["Copasa"]
+    },
+    {
+      "name": "Sabesp RI",
+      "url": "https://www.sabesp.com.br/investors/pt-br/noticias/",
+      "pais": "Brasil",
+      "estado": "SP",
+      "priority": 1,
+      "xpath_noticia": "//div[@class='news'] | //article",
+      "empresas": ["Sabesp"]
+    },
+    {
+      "name": "Copasa RI",
+      "url": "https://ri.copasa.com.br/",
+      "pais": "Brasil",
+      "estado": "MG",
+      "priority": 1,
+      "xpath_noticia": "//div[@class='noticia'] | //article",
+      "empresas": ["Copasa"]
+    },
+    {
+      "name": "Aegea RI",
+      "url": "https://aegea.infoinvest.com.br/en/",
+      "pais": "Brasil",
+      "priority": 1,
+      "xpath_noticia": "//article | //div[@class='news']",
+      "empresas": ["Aegea"]
+    },
+    {
+      "name": "BRK RI",
+      "url": "https://ri.brkambiental.com.br/",
+      "pais": "Brasil",
+      "priority": 2,
+      "xpath_noticia": "//article | //div[@class='noticia']",
+      "empresas": ["BRK"]
+    },
+    {
+      "name": "AySA",
+      "url": "https://www.aysa.com.ar/",
+      "pais": "Argentina",
+      "priority": 1,
+      "xpath_noticia": "//div[@class='noticia'] | //article",
+      "empresas": ["AySA"]
+    },
+    {
+      "name": "Sanepar",
+      "url": "https://www.sanepar.com.br/investor-relations/",
+      "pais": "Brasil",
+      "estado": "PR",
+      "priority": 2,
+      "xpath_noticia": "//article | //div[@class='news']",
+      "empresas": ["Sanepar"]
+    },
+    {
+      "name": "Igua Saneamento",
+      "url": "https://www.igua.com.br/",
+      "pais": "Brasil",
+      "priority": 3,
+      "xpath_noticia": "//article | //div[@class='noticia']",
+      "empresas": ["Igua"]
+    }
+  ],
+  "api_sources": [
+    {
+      "name": "NewsAPI",
+      "base_url": "https://newsapi.org/v2/everything",
+      "pais": "Global",
+      "priority": 1,
+      "free_tier": true,
+      "queries": [
+        "sanitation infrastructure",
+        "water utility privatization",
+        "sewage treatment",
+        "water shortage"
+      ],
+      "auth_method": "api_key",
+      "rate_limit": "100 req/day"
+    },
+    {
+      "name": "GNews",
+      "base_url": "https://gnews.io/api/search",
+      "pais": "Global",
+      "priority": 2,
+      "free_tier": true,
+      "queries": [
+        "saneamiento agua",
+        "privatization utilities",
+        "infraestrutura saneamento"
+      ],
+      "auth_method": "api_key",
+      "rate_limit": "10 req/day"
+    }
+  ],
+  "metadata": {
+    "last_updated": "2026-04-20",
+    "total_sources": 17,
+    "note": "Claude Code deve fazer scraping robusto com retry logic e error handling. RSS feeds são fallback, web scraping é primary para RI/governo."
+  }
+}

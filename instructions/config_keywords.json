@@ -1,0 +1,204 @@
+{
+  "Brasil": {
+    "geral": [
+      "saneamento",
+      "agua",
+      "esgoto",
+      "tarifa",
+      "privatizacao",
+      "concession",
+      "infraestrutura",
+      "utilitario"
+    ],
+    "sao_paulo": [
+      "sao paulo",
+      "sp",
+      "sabesp",
+      "agua sp",
+      "esgoto sp",
+      "rmsp",
+      "tieте",
+      "cantareira"
+    ],
+    "minas_gerais": [
+      "minas gerais",
+      "mg",
+      "copasa",
+      "belo horizonte",
+      "bh",
+      "rmbh",
+      "arsae",
+      "minas"
+    ],
+    "sabesp": [
+      "sabesp",
+      "saneamento sp",
+      "agua sao paulo",
+      "rio tiete",
+      "rio pinheiros"
+    ],
+    "copasa": [
+      "copasa",
+      "saneamento mg",
+      "agua minas",
+      "belo horizonte",
+      "arsae-mg",
+      "rio das velhas"
+    ],
+    "aegea": [
+      "aegea",
+      "agua quente",
+      "saneamento brasil",
+      "concessionarias"
+    ],
+    "brk": [
+      "brk ambiental",
+      "agua brk",
+      "saneamento brk"
+    ],
+    "sanepar": [
+      "sanepar",
+      "parana",
+      "agua pr",
+      "esgoto paraná"
+    ],
+    "igua": [
+      "igua",
+      "saneamento igua"
+    ]
+  },
+  "Argentina": {
+    "geral": [
+      "saneamiento",
+      "agua",
+      "cloacas",
+      "tarifa",
+      "regulacion",
+      "empresa agua",
+      "utilitario"
+    ],
+    "buenos_aires": [
+      "buenos aires",
+      "caba",
+      "zona norte",
+      "zona sur"
+    ],
+    "aysa": [
+      "aysa",
+      "agua buenos aires",
+      "ente agua",
+      "cloacas aysa"
+    ]
+  },
+  "Global": {
+    "geral": [
+      "water",
+      "sanitation",
+      "sewage",
+      "wastewater",
+      "utility",
+      "infrastructure",
+      "privatization",
+      "concession",
+      "tariff",
+      "regulation",
+      "sdg 6"
+    ],
+    "empresas_internacionais": [
+      "american water",
+      "essential utilities",
+      "veolia",
+      "suez",
+      "hera",
+      "acea",
+      "iren",
+      "epm"
+    ]
+  },
+  "Latam": {
+    "geral": [
+      "agua",
+      "saneamiento",
+      "tarifas",
+      "regulacion",
+      "infraestructura",
+      "empresa agua",
+      "america latina",
+      "mercado agua"
+    ],
+    "colombia": [
+      "colombia",
+      "epm",
+      "agua bogota"
+    ],
+    "chile": [
+      "chile",
+      "agua",
+      "empresa agua"
+    ]
+  },
+  "temas_transversais": {
+    "privatizacao": [
+      "privatizacao",
+      "privatización",
+      "desestatizacao",
+      "follow-on",
+      "ipo",
+      "oferta publica",
+      "public offer",
+      "share offering"
+    ],
+    "regulacao": [
+      "regulacao",
+      "regulación",
+      "revisao tarifaria",
+      "revisión tarifária",
+      "wacc",
+      "base regulatoria",
+      "tarifa",
+      "marco legal"
+    ],
+    "operacao": [
+      "abastecimento",
+      "falta dagua",
+      "intermitencia",
+      "obras",
+      "capex",
+      "perdas agua",
+      "eficiencia",
+      "qualidade agua"
+    ],
+    "ambiental": [
+      "seguranca hidrica",
+      "mananciais",
+      "poluicao hidrica",
+      "reuso agua",
+      "esgoto tratamento",
+      "meio ambiente",
+      "contaminacao"
+    ],
+    "juridico": [
+      "tce",
+      "ministerio publico",
+      "mp",
+      "acao judicial",
+      "tribunal",
+      "contingencia",
+      "autocomposicao",
+      "acordo judicial"
+    ],
+    "social": [
+      "tarifa social",
+      "populacao",
+      "reclamacoes",
+      "acesso agua",
+      "universalizacao",
+      "saude publica",
+      "direito agua"
+    ]
+  },
+  "metadata": {
+    "last_updated": "2026-04-20",
+    "note": "Use estas tags para buscar artigos E para ajudar classifier.py a identificar tema_1, empresa, pais com maior precisão. Busca case-insensitive."
+  }
+}

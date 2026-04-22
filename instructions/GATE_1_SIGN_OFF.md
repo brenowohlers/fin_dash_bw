@@ -1,0 +1,245 @@
+# ✅ Gate 1 Sign-off — Design & Setup Complete
+
+**Date:** 2026-04-20  
+**Status:** 🟢 APPROVED — Ready to proceed to Prompt Generation
+
+---
+
+## ✅ Todas as Decisões Críticas Tomadas
+
+### 1. Schema & Taxonomies
+- **Status:** ✅ Complete
+- **File:** `config_taxonomies.json`
+- **Contents:**
+  - tema_1: 8 valores (economico, regulatorio, politico, juridico, operacional, social, ambiental, governanca)
+  - tema_2: 8 valores (optional)
+  - tipo_evento: 11 valores
+  - tipo_fonte: 4 valores
+  - setor: 5 valores
+  - pais: 4 valores
+  - impacto: 3 valores
+  - tom: 4 valores
+  - status_revisao: 3 valores
+- **Ready:** ✅ Yes
+
+### 2. Sources Configuration
+- **Status:** ✅ Complete
+- **File:** `config_sources.json`
+- **Contents:**
+  - 4 RSS feeds (Valor, G1, Diário do Comércio, Reuters)
+  - 8 web scraping targets (Arsae, Sabesp RI, Copasa RI, Aegea RI, BRK RI, AySA, Sanepar, Igua)
+  - 2 API sources (NewsAPI, GNews)
+  - **Total:** 17 prioritized sources
+- **Strategy:** Claude Code faz scraping robusto com retry logic; RSS feeds são fallback
+- **Ready:** ✅ Yes
+
+### 3. Keywords Configuration
+- **Status:** ✅ Complete
+- **File:** `config_keywords.json`
+- **Structure:**
+  - By Country: Brasil (6 states), Argentina, Global, LatAm
+  - By Company: Sabesp, Copasa, Aegea, BRK, Sanepar, Igua, AySA + international
+  - By Theme: Privatização, Regulação, Operação, Ambiental, Jurídico, Social
+  - Tags are separate arrays (não aninhadas em objetos)
+- **Ready:** ✅ Yes
+
+### 4. GitHub Strategy
+- **Status:** ✅ Complete
+- **File:** `GITHUB_STRATEGY.md`
+- **Decision:** Public repo + Local HTML dashboard
+- **How it works:**
+  - Dashboard: `dashboard/index.html` (abrir localmente)
+  - Data source: `data/news.jsonl` (leitura via GitHub raw URL)
+  - Automation: GitHub Actions daily trigger (9 AM BRT) OU manual local
+- **Repo structure:** 8 main folders (data, logs, config, dashboard, claude-code, .github)
+- **Ready:** ✅ Yes
+
+---
+
+## 📦 Deliverables Generated
+
+### PMO Documentation (4 files)
+1. ✅ **SANITATION_NEWS_PMO_PLAYBOOK.md** — Visão, arquitetura, fases, checklist
+2. ✅ **SANITATION_NEWS_TASK_MATRIX.md** — RACI, gates, decisões
+3. ✅ **SANITATION_NEWS_WEEKLY_TEMPLATE.md** — Sync template
+4. ✅ **SANITATION_NEWS_COORDINATION_GUIDELINES.md** — Backend ↔ Frontend contrato
+
+### Configuration Files (3 files)
+1. ✅ **config_taxonomies.json** — Enum values (19 campos)
+2. ✅ **config_sources.json** — 17 fontes estruturadas
+3. ✅ **config_keywords.json** — Tags por país/empresa/tema
+
+### Infrastructure Documentation (2 files)
+1. ✅ **GITHUB_STRATEGY.md** — Setup + operação
+2. ✅ **EXECUTIVE_SUMMARY.md** — Status + próximos passos
+
+**Total:** 9 arquivos, ~1200 linhas de documentação + configs
+
+---
+
+## 🎯 Schema: Confirmação Final
+
+### 19 Campos Finalizados
+
+```json
+{
+  "data": "YYYY-MM-DD",
+  "data_coleta": "ISO8601",
+  "pais": "enum",
+  "estado_provincia": "string | null",
+  "empresa": ["string"],
+  "tema_1": "enum",
+  "tema_2": "enum | null",
+  "setor": "enum | null",
+  "tipo_evento": "enum",
+  "titulo": "string",
+  "veiculo": "string",
+  "tipo_fonte": "enum",
+  "descricao": "string",
+  "resumo_executivo": "string",
+  "link": "URL",
+  "tags": ["string"],
+  "impacto": "enum",
+  "tom": "enum",
+  "status_revisao": "enum"
+}
+```
+
+**Exemplo:**
+```json
+{"data":"2026-04-20","data_coleta":"2026-04-20T09:15:30-03:00","pais":"Brasil","estado_provincia":"SP","empresa":["Sabesp"],"tema_1":"regulatorio","tema_2":"economico","setor":"agua","tipo_evento":"regulacao","titulo":"Sabesp anuncia investimento de R$ 2B em infraestrutura","veiculo":"Valor Econômico","tipo_fonte":"grande_midia","descricao":"Sabesp divulgou plano de investimento...","resumo_executivo":"Investimento sinaliza confiança em crescimento futuro...","link":"https://valor.globo.com/...","tags":["sabesp","investimento","sp","agua"],"impacto":"alto","tom":"positivo","status_revisao":"novo"}
+```
+
+**Ready:** ✅ Yes
+
+---
+
+## 🏗️ Architecture Confirmation
+
+```
+Sources (RSS + Web + APIs)
+        ↓ (Claude Code #1: Processor)
+GitHub Repository
+  ├─ data/news.jsonl (append-only)
+  ├─ logs/YYYY-MM-DD.txt
+  ├─ config/
+  └─ dashboard/
+        ↓ (GitHub raw URL)
+HTML Dashboard (Claude Code #2)
+  ├─ Fetch data
+  ├─ Filter & search
+  ├─ Render cards
+  └─ Charts (Chart.js)
+        ↓
+Browser (Your local machine)
+  └─ Access via File → Open (index.html)
+```
+
+**Ready:** ✅ Yes
+
+---
+
+## 🚀 Go-Live Timeline (Confirmed)
+
+| Week | Phase | Owner | Deliverable |
+|------|-------|-------|-------------|
+| This (24-04) | Gate 1 Sign-off | PMO | ✅ This document |
+| 27-04 | Backend Dev Starts | CC#1 | processor.py + fetchers.py |
+| 01-05 | Frontend Dev Starts | CC#2 | dashboard HTML + app.js |
+| 05-05 | E2E Test | Both | System live, 9 AM trigger working |
+| 12-05 | Handoff to Breno | PMO | You can operate solo |
+
+---
+
+## 📋 Handoff Checklist for Claude Code Instances
+
+### For Claude Code #1 (Daily Processor)
+
+**Receives:** Prompt #2 (to be generated by PMO)
+
+**Must deliver:**
+- [ ] processor.py (main orchestrator)
+- [ ] fetchers.py (RSS + web scraping + APIs)
+- [ ] classifier.py (auto-classify tema_1, impacto, etc)
+- [ ] dedup.py (deduplication by URL)
+- [ ] requirements.txt (pip dependencies)
+- [ ] Appends 10+ articles to news.jsonl on first run
+- [ ] Generates logs/YYYY-MM-DD.txt daily
+- [ ] Zero errors on dry-run
+
+**Interface:** Reads from config/sources.json, config/keywords.json, config/taxonomies.json
+**Output:** data/news.jsonl (append-only), logs/YYYY-MM-DD.txt
+
+---
+
+### For Claude Code #2 (Dashboard Builder)
+
+**Receives:** Prompt #1 (to be generated by PMO)
+
+**Must deliver:**
+- [ ] dashboard/index.html (main UI)
+- [ ] dashboard/assets/app.js (logic)
+- [ ] dashboard/assets/style.css (styling)
+- [ ] Loads news.jsonl via GitHub raw URL
+- [ ] Filterable by pais, empresa, tema_1, impacto, tom, data_range
+- [ ] Full-text search (titulo + descricao)
+- [ ] 4 charts (tema frequency, country distribution, sentiment over time, top companies)
+- [ ] Mobile responsive (375px, 768px, 1024px)
+- [ ] Error handling (retry, fallback to localStorage)
+
+**Interface:** Reads from GitHub raw URL, no backend needed
+**Dependencies:** Chart.js (via CDN)
+
+---
+
+## 🔐 GitHub Setup Required
+
+### Before Claude Code Starts
+
+1. **Create repo** `sanitation-news-intelligence` (public)
+2. **Folder structure:** data/, logs/, config/, dashboard/, claude-code/, .github/
+3. **Upload configs:**
+   - config/taxonomies.json ✅ Ready
+   - config/sources.json ✅ Ready
+   - config/keywords.json ✅ Ready
+4. **Create .github/workflows/daily-run.yml** (GitHub Actions template)
+5. **Add secrets (if using GA):** ANTHROPIC_API_KEY, NEWSAPI_KEY, GNEWS_API_KEY
+
+---
+
+## ✅ Final Checklist Before Prompts
+
+- [x] Schema 19 campos finalizados e aprovado
+- [x] taxonomies.json pronto (all enums defined)
+- [x] sources.json pronto (17 sources prioritized)
+- [x] keywords.json pronto (tags by país/empresa/tema)
+- [x] GitHub strategy definida (local HTML + GitHub Actions)
+- [x] Architecture diagrams validadas
+- [x] PMO playbook + governance docs criados
+- [x] RACI matrix definida
+- [x] Weekly sync template ready
+- [x] Coordination guidelines (Backend ↔ Frontend) finalizadas
+- [x] Gate 1 sign-off complete
+
+**Status:** 🟢 **READY TO PROCEED**
+
+---
+
+## 🚀 Next Action
+
+**When you're ready:**
+1. Review this Gate 1 sign-off
+2. Confirm all configs are correct
+3. Say "GATE 1 APPROVED" 
+4. PMO generates Prompt #1 & #2
+5. You send prompts to Claude Code #1 & #2
+
+**Expected:** Both Claude Code instances start development Monday 27-04
+
+---
+
+**Sign-off by:** PMO  
+**Date:** 2026-04-20  
+**Status:** ✅ COMPLETE
+
+Awaiting your approval to proceed to Prompt Generation phase.
