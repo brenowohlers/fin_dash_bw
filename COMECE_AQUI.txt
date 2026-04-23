@@ -1,0 +1,209 @@
+================================================================================
+                    🚀 AUTOMAÇÃO DE NOTÍCIAS - WINDOWS
+                         COMECE AQUI - 5 ETAPAS
+================================================================================
+
+Seu objetivo: Coletar notícias automaticamente SEM fazer nada manual.
+Tempo total: ~30 minutos (primeira vez)
+Depois: Automático todos os dias às 6 AM
+
+================================================================================
+                              ETAPA 1: PYTHON
+================================================================================
+
+1. Acesse: https://www.python.org/downloads/
+2. Clique no botão amarelo grande "Download Python 3.12"
+3. Execute o arquivo baixado
+4. ⚠️  IMPORTANTE: Marque "Add Python to PATH"
+5. Clique "Install Now" e aguarde
+
+Verificar:
+  • Abra PowerShell
+  • Digite: python --version
+  • Deve aparecer: Python 3.12.x
+
+================================================================================
+                               ETAPA 2: GIT
+================================================================================
+
+1. Acesse: https://git-scm.com/download/win
+2. Baixe e execute o instalador
+3. Clique "Next" em todas as telas (padrão está bom)
+4. Aguarde terminar
+
+Verificar:
+  • Abra PowerShell NOVA
+  • Digite: git --version
+  • Deve aparecer: git version 2.xx.x
+
+================================================================================
+                          ETAPA 3: CLONAR REPOSITÓRIO
+================================================================================
+
+1. Abra PowerShell
+2. Escolha uma pasta. Exemplo:
+   C:\Users\SeuUsuário\Documentos\
+
+3. Digite (uma linha por vez):
+
+   cd C:\Users\SeuUsuário\Documentos
+   git clone https://github.com/brenowohlers/fin_dash_bw.git
+   cd fin_dash_bw
+
+4. Aguarde terminar (deve aparecer "done")
+
+Verificar:
+  • Digite: ls
+  • Deve ver arquivos como "news_collector.py", "README.md", etc
+
+================================================================================
+                          ETAPA 4: CONFIGURAR SSH
+================================================================================
+
+Para fazer push SEM precisar de token!
+
+1. No PowerShell, digite:
+   ssh-keygen -t ed25519 -C "seu-email@exemplo.com"
+
+2. Pressione ENTER 3 vezes (deixe em branco)
+
+3. Digite:
+   cat $env:USERPROFILE\.ssh\id_ed25519.pub
+
+4. Copie TODA a saída (começa com "ssh-ed25519")
+
+5. Acesse: https://github.com/settings/ssh/new
+6. Cole a chave no campo "Key"
+7. Dê um nome: "Windows Laptop"
+8. Clique "Add SSH key"
+
+9. De volta ao PowerShell, digite:
+   git remote set-url origin git@github.com:brenowohlers/fin_dash_bw.git
+
+10. Teste:
+    ssh -T git@github.com
+
+    Deve aparecer: "Hi brenowohlers! You've successfully authenticated..."
+
+================================================================================
+                            ETAPA 5: TESTAR
+================================================================================
+
+No PowerShell (na pasta fin_dash_bw), digite:
+
+  python news_collector.py
+
+Deve aparecer:
+  ✓ Artigo adicionado: Sabesp continua...
+  ✓ 5 artigos adicionados
+  ✓ Commit criado com sucesso
+  ✓ Push concluído com sucesso!
+  ✅ SUCESSO! Dashboard atualizado
+
+Se viu "SUCESSO", tudo está funcionando! ✅
+
+================================================================================
+                     AGORA: AGENDAR PARA RODAR SOZINHO
+================================================================================
+
+1. Pesquise "Task Scheduler" no menu Iniciar
+2. Clique direito → "Run as Administrator"
+3. No menu esquerdo: clique "Create Task"
+
+Na aba "General":
+  • Name: News Collector
+  • Marque: "Run with highest privileges"
+
+Na aba "Triggers":
+  • Clique "New..."
+  • Begin the task: "On a schedule"
+  • Repeat every: "Daily"
+  • At: "06:00:00" (6 AM)
+  • Clique "OK"
+
+Na aba "Actions":
+  • Clique "New..."
+  • Action: "Start a program"
+  • Program/script: python
+  • Add arguments: C:\Users\SeuUsuário\Documentos\fin_dash_bw\news_collector.py
+  • Start in: C:\Users\SeuUsuário\Documentos\fin_dash_bw
+  • Clique "OK"
+
+4. Clique "OK" para salvar
+
+Pronto! Todos os dias às 6 AM vai rodar sozinho! 🎉
+
+================================================================================
+                           📊 VERIFICAR SE ESTÁ FUNCIONANDO
+================================================================================
+
+Opção 1 (GitHub):
+  • Acesse: https://github.com/brenowohlers/fin_dash_bw
+  • Procure por um novo commit com "Add news from..."
+  • Se vê, significa que rodou! ✅
+
+Opção 2 (Task Scheduler):
+  • Abra Task Scheduler
+  • Clique em "News Collector"
+  • Vá na aba "History"
+  • Se vê "Task Completed Successfully", rodou! ✅
+
+================================================================================
+                          ✅ PARABÉNS! ESTÁ PRONTO!
+================================================================================
+
+Agora você tem:
+  ✓ Coleta automática de notícias
+  ✓ Sem token (usando SSH)
+  ✓ Sem prompts manuais
+  ✓ Roda todos os dias às 6 AM
+  ✓ Dashboard atualiza sozinho
+
+Dashboard: https://brenowohlers.github.io/fin_dash_bw/dashboard/
+
+================================================================================
+                            📚 DOCUMENTAÇÃO
+================================================================================
+
+Se precisa de mais detalhes, abra no repositório:
+
+  • WINDOWS_SETUP_COMPLETO.md  <- Guia detalhado com screenshots
+  • QUICK_START.md              <- Resumo rápido
+  • NEWS_AUTOMATION.md          <- Documentação técnica
+
+================================================================================
+                        🆘 ALGO NÃO FUNCIONOU?
+================================================================================
+
+1. Python não aparece?
+   → Reinstale Python
+   → Marque "Add Python to PATH"
+   → Reinicie PowerShell
+
+2. Git não aparece?
+   → Reinstale Git
+   → Reinicie PowerShell
+
+3. Script falha no Task Scheduler mas funciona manual?
+   → Use o caminho completo: C:\Users\SeuUsuário\AppData\Local\Programs\Python\Python312\python.exe
+   → Execute Task Scheduler como Administrator
+
+4. SSH não funciona?
+   → Verifique se a chave foi adicionada no GitHub
+   → Teste: ssh -T git@github.com
+
+5. Task Scheduler não roda?
+   → Verificar "History" para ver erro
+   → Desabilitar e reabilitar a tarefa
+
+================================================================================
+                           PRONTO PARA COMEÇAR?
+================================================================================
+
+1. Abra PowerShell
+2. Siga as 5 etapas acima
+3. Você estará pronto em ~30 minutos!
+
+Boa sorte! 🚀
+
+================================================================================
